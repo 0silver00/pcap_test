@@ -52,13 +52,13 @@ int main(int argc, char* argv[]) {
         printf("################################################################\n");
         printf("**Ethernet**\n");
         printf("src mac : %02x:%02x:%02x:%02x:%02x:%02x\n",
-               ether_packet->ether_dhost[0],ether_packet->ether_dhost[2],
-                ether_packet->ether_dhost[4],ether_packet->ether_dhost[6],
-                ether_packet->ether_dhost[8],ether_packet->ether_dhost[10]);
+               ether_packet->ether_dhost[0],ether_packet->ether_dhost[1],
+                ether_packet->ether_dhost[2],ether_packet->ether_dhost[3],
+                ether_packet->ether_dhost[4],ether_packet->ether_dhost[5]);
         printf("dst mac : %02x:%02x:%02x:%02x:%02x:%02x\n\n",
-               ether_packet->ether_shost[0],ether_packet->ether_shost[2],
-                ether_packet->ether_shost[4],ether_packet->ether_shost[6],
-                ether_packet->ether_shost[8],ether_packet->ether_shost[10]);
+               ether_packet->ether_shost[0],ether_packet->ether_shost[1],
+                ether_packet->ether_shost[2],ether_packet->ether_shost[3],
+                ether_packet->ether_shost[4],ether_packet->ether_shost[5]);
 
         printf("*****IP*****\n");
         printf("src ip : %s\n", inet_ntoa(ipv4_packet->ip_src));
