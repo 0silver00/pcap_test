@@ -29,6 +29,9 @@
  *
  */
 
+#include <pcap.h>
+
+
 #ifndef __LIBNET_HEADERS_H
 #define __LIBNET_HEADERS_H
 /**
@@ -105,6 +108,9 @@
 #define LIBNET_TCP_H            0x14    /**< TCP header:          20 bytes */
 #define LIBNET_UDP_H            0x08    /**< UDP header:           8 bytes */
 #define LIBNET_VRRP_H           0x08    /**< VRRP header:          8 bytes */
+
+#define ETHER_ADDR_LEN 6
+
 
 /**
  * IEEE 802.1Q (Virtual Local Area Network) VLAN header, static header 
@@ -528,12 +534,12 @@ struct libnet_fddi_hdr
 #define LIBNET_FDDI_LLC_FRAME  0x10
 #define LIBNET_FDDI_48BIT_ADDR 0x40
 #define LIBNET_FDDI_FC_REQD    LIBNET_FDDI_LLC_FRAME | LIBNET_FDDI_48BIT_ADDR 
-    u_int8_t  fddi_dhost[FDDI_ADDR_LEN];               /* destination fddi address */
-    u_int8_t  fddi_shost[FDDI_ADDR_LEN];               /* source fddi address */
+    //u_int8_t  fddi_dhost[FDDI_ADDR_LEN];               /* destination fddi address */
+    //u_int8_t  fddi_shost[FDDI_ADDR_LEN];               /* source fddi address */
     u_int8_t  fddi_llc_dsap;                           /* DSAP */
     u_int8_t  fddi_llc_ssap;                           /* SSAP */
     u_int8_t  fddi_llc_control_field;                  /* Class/Format/Priority */
-    u_int8_t  fddi_llc_org_code[LIBNET_ORG_CODE_SIZE]; /* Organization Code 3-bytes */
+    //u_int8_t  fddi_llc_org_code[LIBNET_ORG_CODE_SIZE]; /* Organization Code 3-bytes */
     u_int8_t  fddi_type;                               /* Protocol Type */
     u_int8_t  fddi_type1;                              /* see note above. */
 #define FDDI_TYPE_IP            0x0800  /* IP protocol */
@@ -653,6 +659,7 @@ struct libnet_ipv4_hdr
 #if (LIBNET_BIG_ENDIAN)
     u_int8_t ip_v:4,       /* version */
            ip_hl:4;        /* header length */
+
 #endif
     u_int8_t ip_tos;       /* type of service */
 #ifndef IPTOS_LOWDELAY
@@ -984,9 +991,9 @@ struct libnet_icmpv4_hdr
     {
         struct
         {
-            n_time its_otime;
-            n_time its_rtime;
-            n_time its_ttime;
+            //n_time its_otime;
+            //n_time its_rtime;
+            //n_time its_ttime;
         } ts;
         struct
         {
@@ -1569,12 +1576,12 @@ struct libnet_token_ring_hdr
 #define LIBNET_TOKEN_RING_FRAME  0x10
     u_int8_t  token_ring_frame_control;
 #define LIBNET_TOKEN_RING_LLC_FRAME  0x40
-    u_int8_t  token_ring_dhost[TOKEN_RING_ADDR_LEN];
-    u_int8_t  token_ring_shost[TOKEN_RING_ADDR_LEN];
+    //u_int8_t  token_ring_dhost[TOKEN_RING_ADDR_LEN];
+    //u_int8_t  token_ring_shost[TOKEN_RING_ADDR_LEN];
     u_int8_t  token_ring_llc_dsap;
     u_int8_t  token_ring_llc_ssap;
     u_int8_t  token_ring_llc_control_field;
-    u_int8_t  token_ring_llc_org_code[LIBNET_ORG_CODE_SIZE];
+    //u_int8_t  token_ring_llc_org_code[LIBNET_ORG_CODE_SIZE];
     u_int16_t token_ring_type;
 #define TOKEN_RING_TYPE_IP            0x0800  /* IP protocol */
 #define TOKEN_RING_TYPE_ARP           0x0806  /* addr. resolution protocol */
